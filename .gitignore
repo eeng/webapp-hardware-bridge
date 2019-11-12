@@ -4,7 +4,8 @@ documents/
 gradle/
 log/
 out/
-jre/
+jre*/
 build/
 setting.json
 *.exe
+.DS_Store
