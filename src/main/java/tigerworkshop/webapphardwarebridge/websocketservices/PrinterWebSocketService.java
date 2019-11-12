@@ -207,8 +207,8 @@ public class PrinterWebSocketService implements WebSocketServiceInterface {
         job.setPrintService(docPrintJob.getPrintService());
         PageFormat pageFormat = job.defaultPage();
 
-        logger.trace("Paper Size: " + pageFormat.getWidth() + " x " + pageFormat.getHeight());
-        logger.trace("Imageable Size:" + pageFormat.getImageableWidth() + " x " + pageFormat.getImageableHeight());
+        logger.info("Paper Size: " + pageFormat.getWidth() + " x " + pageFormat.getHeight());
+        logger.info("Imageable Size: " + pageFormat.getImageableWidth() + " x " + pageFormat.getImageableHeight());
 
         Paper paper = pageFormat.getPaper();
         double width = pageFormat.getWidth();
@@ -236,9 +236,9 @@ public class PrinterWebSocketService implements WebSocketServiceInterface {
 
                 AnnotatedPrintable printable;
                 if (System.getProperty("os.name").contains("Mac OS X")) {
-                    printable = new AnnotatedPrintable(new PDFPrintable(document, Scaling.SHRINK_TO_FIT, false, 203));
+                    printable = new AnnotatedPrintable(new PDFPrintable(document, Scaling.SCALE_TO_FIT, false, 203));
                 } else {
-                    printable = new AnnotatedPrintable(new PDFPrintable(document, Scaling.SHRINK_TO_FIT));
+                    printable = new AnnotatedPrintable(new PDFPrintable(document, Scaling.SCALE_TO_FIT));
                 }
 
                 for (AnnotatedPrintable.AnnotatedPrintableAnnotation printDocumentExtra : printDocument.getExtras()) {
