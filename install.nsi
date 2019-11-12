@@ -91,4 +91,5 @@ SectionEnd
 
 Function .onInstSuccess
   Exec "$INSTDIR\jre\bin\javaw.exe -cp webapp-hardware-bridge.jar tigerworkshop.webapphardwarebridge.GUI"
+  ExecShell "open" "https://127.0.0.1:12212"
 FunctionEnd
